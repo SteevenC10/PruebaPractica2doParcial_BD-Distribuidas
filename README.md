@@ -18,3 +18,21 @@ Región: selecciona una (ej. us-central1)
 Rango IP: 10.128.0.0/20
 
 Crea la VPC.
+
+
+2. 🔹 Regla de Firewall
+Ve a VPC Network > Firewall
+
+"Create Firewall Rule"
+
+Nombre: allow-db-ports
+
+Red: replication-lab-vpc
+
+Targets: All instances in the network
+
+Source IP: 10.128.0.0/20
+
+Protocols:
+
+TCP: 3306, 1433, 27017
