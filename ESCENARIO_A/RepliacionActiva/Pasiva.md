@@ -75,11 +75,7 @@ PASOS PARA CREAR LA REPLICACION  ACTIVA Y PASIVA
 --> sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
 
     2.1- Dentro de este se añadira lo siguiente: 
-            •server-id = 1
-            •log-bin = mysql-bin
-            •binlog-do-db = centro-medico2
-            •bind-address = 0.0.0.0
-
+           
             server-id = 1
             log_bin = /var/log/mysql/mysql-bin.log
             bind-address = 0.0.0.0
@@ -140,6 +136,17 @@ Slave_SQL_Running: Yes
 TEnemos la replica 
 
 #En el maestro 
+enviamos los mensajes de prueba;
+1.-INSERT INTO prueba_sync (mensaje) VALUES ('¡Hola desde el maestro');
+2.-INSERT INTO prueba_sync (mensaje) VALUES ('¡Hola desde el maestro');
+3.- INSERT INTO prueba_sync (mensaje) VALUES ('¡Hola desde el maestro');
+4.- INSERT INTO prueba_sync (mensaje) VALUES ('¡Hola desde el maestro');
+5.- INSERT INTO prueba_sync (mensaje) VALUES ('¡Hola desde el maestro');
+6.-INSERT INTO prueba_sync (mensaje) VALUES ('¡Hola desde el maestro');
+7.-INSERT INTO prueba_sync (mensaje) VALUES ('¡Hola desde el maestro');
+8.-INSERT INTO prueba_sync (mensaje) VALUES ('¡Hola desde el maestro');
+9.-INSERT INTO prueba_sync (mensaje) VALUES ('¡Hola desde el maestro');
+10.- INSERT INTO prueba_sync (mensaje) VALUES ('¡Hola desde el maestro');
 
 Ingresmos un dato a la tabla de la base replicada 
 # En el esclavo

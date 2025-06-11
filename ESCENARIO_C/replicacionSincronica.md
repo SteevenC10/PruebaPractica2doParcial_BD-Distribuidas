@@ -51,3 +51,18 @@ sudo -u postgres pg_basebackup -h 10.128.0.2 -D /var/lib/postgresql/14/main -U r
 
 
 primary_conninfo = 'host=10.128.0.3 port=5432 user=replicador password=1850622182'
+
+# 9. Cambiar permisos si es necesario
+sudo chown -R postgres:postgres /var/lib/postgresql/14/main
+
+# 10. Iniciar el servicio PostgreSQL en el SLAVE (VM2)
+sudo systemctl start postgresql
+
+# 11. Verificar el estado de la replicación
+sudo -u postgres psql -c "select * from pg_stat_replication;"   # En el MASTER
+sudo -u postgres psql -c "select * from pg_is_in_recovery();"   # En el SLAVE
+
+# Notas:
+# - Reemplaza IP_MASTER y IP_SLAVE por las IPs internas o externas de tus VMs.
+# - Asegúrate de que ambas VMs puedan comunicarse por el puerto 5432.
+# - El usuario y contraseña de replicación deben coincidir en ambos servidores.
